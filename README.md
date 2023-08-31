@@ -13,6 +13,9 @@
 <a name="desc"></a>
 ## Description
 
+The Finance-platform-prototype is a straightforward application that utilizes the IEX Cloud API, providing users with the opportunity to practice buying and selling stocks available on the IEX. Users can execute real-time stock transactions, track your trading history, and explore additional features. 
+The platform has a minimalist design, simplified trading mechanics, and serves as an excellent introduction to the world of stock trading.
+
 <a name="homepage"></a>
 ## Homepage
 
