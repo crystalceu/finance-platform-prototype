@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Summarizing Table
+{% endblock %}
+
+{% block main %}
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Current Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for saving in savings %}
+                    <tr>
+                        <td>{{ saving["symbol"] }}</td>
+                        <td>{{ saving["name"] }}</td>
+                        <td>{{ saving["number"] }}</td>
+                        <td>{{ saving["price"] | usd }}</td>
+                        <td>{{ (saving["number"] * saving["price"]) | usd }}</td>
+                        <td>
+                            <form action="/buy" method="post">
+                                <input type="hidden" name="symbol" value="{{ saving['symbol'] }}">
+                                <input type="hidden" name="shares" value="1">
+                                <input type="hidden" name="home" value="index">
+                                <button class="btn btn-primary" type="submit">Buy</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/sell" method="post">
+                                <input type="hidden" name="symbol" value="{{ saving['symbol'] }}">
+                                <input type="hidden" name="shares" value="1">
+                                <input type="hidden" name="home" value="index">
+                                <button class="btn btn-primary" type="submit">Sell</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tbody>
+                <tr style="border: 1px solid transparent">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>Cash</th>
+                    <td>{{ money | usd }}</td>
+                </tr>
+                <tr style="border: 1px solid transparent">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>TOTAL</th>
+                    <td>{{ (shares_price + money) | usd }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

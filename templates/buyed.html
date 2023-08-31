@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Summarizing Table
+{% endblock %}
+
+{% block main %}
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ buyrows["symbol"] }}</td>
+                    <td>{{ buyrows["name"] }}</td>
+                    <td>{{ buyrows["number"] }}</td>
+                    <td>{{ buyrows["price"] | usd }}</td>
+                    <td>{{ buyrows["cost"] | usd }}</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr style="border: 1px solid transparent">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>Availible Cash</th>
+                    <td>{{ money | usd }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

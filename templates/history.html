@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Summarizing Table
+{% endblock %}
+
+{% block main %}
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>TOTAL</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction["symbol"] }}</td>
+                        <td>{{ transaction["name"] }}</td>
+                        <td>{{ transaction["number"] }}</td>
+                        <td>{{ transaction["type"] }}{{ transaction["cost"] | usd }}</td>
+                        <td>{{ transaction["time"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
